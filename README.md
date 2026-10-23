@@ -1,96 +1,93 @@
-# 📊 Data Formats Lab: CSV vs JSON vs Parquet
+<h1 align="center">📊 Data Formats Lab</h1>
+<h3 align="center">CSV vs JSON vs Parquet with Python</h3>
 
-A hands-on Python project exploring how CSV, JSON, and Parquet store data, preserve data types, and support data analytics and engineering workflows.
+<p align="center">
+  A hands-on comparison of the three most common data formats in analytics and data engineering: how they store data, how they behave, and how to validate them.
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.9+-3776AB?logo=python&logoColor=white" alt="Python">
+  <img src="https://img.shields.io/badge/Pandas-150458?logo=pandas&logoColor=white" alt="Pandas">
+  <img src="https://img.shields.io/badge/NumPy-013243?logo=numpy&logoColor=white" alt="NumPy">
+  <img src="https://img.shields.io/badge/PyArrow-Parquet-orange" alt="PyArrow">
+  <img src="https://img.shields.io/badge/Jupyter-F37626?logo=jupyter&logoColor=white" alt="Jupyter">
+</p>
+
+---
 
 ## 🎯 Overview
 
-This project uses an orders dataset to practice writing, reading, and validating data in three common formats. The goal is to understand their differences and verify data consistency after saving and reloading files.
+Data moves between systems as files, and the format you choose affects **storage size, speed, and data integrity**. This project takes one `orders` dataset, saves it as CSV, JSON, and Parquet, reloads each file, and compares the results.
 
-## 🛠️ Tech Stack
+The goal is not just to read and write files, but to **verify that data survives a round trip** unchanged.
 
-- Python
-- Pandas
-- NumPy
-- PyArrow
-- Jupyter Notebook
+## 🔍 What This Project Covers
 
-## 📚 What I Learned
+| Format | What I Practiced |
+|--------|------------------|
+| **CSV** | Reading and writing with Pandas, inspecting rows, columns, and dtypes |
+| **JSON** | Objects and arrays, the `json` module, `pd.read_json()`, flattening nested data with `pd.json_normalize()` |
+| **Parquet** | Columnar storage, reading and writing with PyArrow, comparing file size and dtypes |
+| **Validation** | Comparing data before and after save/load, checking dtypes and consistency |
 
-### CSV
-- Reading and writing tabular data with Pandas
-- Inspecting rows, columns, and data types
-- Understanding data type inference when loading CSV files
+## 📈 Results
 
-### JSON
-- Working with JSON objects and arrays
-- Reading and writing JSON using Python
-- Loading JSON with Pandas
-- Exploring nested data with `pd.json_normalize()`
+> Replace the placeholders with your own measured values.
 
-### Parquet
-- Reading and writing Parquet files with PyArrow
-- Understanding columnar storage
-- Comparing file sizes and data types across formats
+| Format | File Size | Dtypes Preserved? | Notes |
+|--------|-----------|-------------------|-------|
+| CSV | `X MB` | ❌ Partially | e.g. dates reload as strings |
+| JSON | `X MB` | ❌ Partially | Good for nested data, larger on disk |
+| Parquet | `Y MB` | ✅ Yes | Compact, columnar, typed |
 
-### Data Validation
-- Comparing data before and after saving and loading
-- Checking data types and data consistency
-- Understanding why different formats may behave differently during round trips
+## 💡 Key Takeaways
+
+- **CSV** is simple and universally supported, but data types must be handled explicitly.
+- **JSON** fits nested and semi-structured data, especially API responses.
+- **Parquet** is built for analytics: columnar, compressed, and type-aware.
+- **Never assume** data is correct after saving and loading. Validate it.
 
 ## 🗂️ Project Structure
 
 ```text
 data-formats-lab/
-├── csv_json_parquet.ipynb
-├── nested_order.json
-├── order.json
-├── orders.csv
-├── orders.json
-├── orders.parquet
+├── csv_json_parquet.ipynb   # Main notebook with all experiments
+├── orders.csv               # Sample data (CSV)
+├── orders.json              # Sample data (JSON)
+├── orders.parquet           # Sample data (Parquet)
 └── README.md
 ```
 
 ## 🚀 Getting Started
 
-Clone the repository:
-
 ```bash
+# 1. Clone the repository
 git clone https://github.com/Bilvish/data-formats-lab.git
 cd data-formats-lab
-```
 
-Install the required libraries:
-
-```bash
+# 2. Install dependencies
 pip install pandas numpy pyarrow jupyter
-```
 
-Launch the notebook:
-
-```bash
+# 3. Launch the notebook
 jupyter notebook csv_json_parquet.ipynb
 ```
 
-Run the notebook cells from top to bottom.
+Run the cells from top to bottom to reproduce every experiment.
 
-## 💡 Key Takeaways
+## 🛠️ Tech Stack
 
-- CSV is simple and widely supported, but data types may need explicit handling.
-- JSON supports structured and nested data.
-- Parquet is a columnar format well suited to analytical workloads.
-- Data should be validated after saving and loading instead of assuming the round trip succeeded.
+Python · Pandas · NumPy · PyArrow · Jupyter Notebook
 
-## 🔭 Future Improvements
+## 🔭 Next Steps
 
-- Benchmark read and write times
-- Compare Parquet compression options
-- Explore partitioned Parquet datasets
-- Add automated schema validation
+- [ ] Benchmark read and write speed on larger datasets
+- [ ] Compare compression codecs (Snappy, Gzip) for Parquet
+- [ ] Explore partitioned Parquet datasets
+- [ ] Add schema validation checks
 
 ## 👤 Author
 
 **Bilvish**
+🔗 [GitHub](https://github.com/Bilvish)
 
-[GitHub Profile](https://github.com/Bilvish)
-
-*Part of my learning journey toward Data Engineering.*
+*Part of my journey toward a career in Data Engineering. Feedback and suggestions are welcome.*
